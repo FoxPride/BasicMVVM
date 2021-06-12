@@ -1,21 +1,31 @@
 ﻿using System.Windows;
 using System.Windows.Input;
+using DefaultLibrary.Helpers;
+using DefaultLibrary.Services.Interfaces;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
+using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 
 namespace DefaultLibrary.ViewModels
 {
     public class MainWindowViewModel : ObservableObject
     {
+        /// <summary>
+        /// Gets the <see cref="ILogger"/> instance to use.
+        /// </summary>
+        private readonly ILogger _loggerService = Ioc.Default.GetRequiredService<ILogger>();
+
         public MainWindowViewModel()
         {
             ChangeTitleCommand = new RelayCommand<string>(UpdateTitle);
             CloseWindowCommand = new RelayCommand(CloseWindow);
+
+            _loggerService.Log("Logged");
         }
 
         #region Title : string - Window title
 
-        private string _title = "Test title";
+        private string _title = "Main window";
 
         /// <summary>Window title</summary>
         public string Title
