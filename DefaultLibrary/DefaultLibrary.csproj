@@ -9,9 +9,7 @@
     <Folder Include="Data\" />
     <Folder Include="Infrastructure\Commands\" />
     <Folder Include="Models\" />
-    <Folder Include="Helpers\" />
     <Folder Include="Resources\" />
-    <Folder Include="Services\" />
   </ItemGroup>
 
   <ItemGroup>
