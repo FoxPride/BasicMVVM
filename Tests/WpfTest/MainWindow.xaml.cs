@@ -1,4 +1,4 @@
-﻿namespace DefaultMVVM
+﻿namespace WpfTest
 {
     public partial class MainWindow
     {
