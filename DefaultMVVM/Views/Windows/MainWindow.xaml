@@ -3,9 +3,36 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewModels="clr-namespace:DefaultLibrary.ViewModels;assembly=DefaultLibrary"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
-    <Grid>
+        d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel, IsDesignTimeCreatable=True}"
+        Title="{Binding Title}" Height="450" Width="800" Background="Gray">
 
+    <Window.DataContext>
+        <viewModels:MainWindowViewModel/>
+    </Window.DataContext>
+
+    <Window.InputBindings>
+        <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseWindowCommand}"/>
+    </Window.InputBindings>
+
+    <Grid>
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+                Margin="5" Padding="5"
+                Content="Change title"
+                Command="{Binding ChangeTitleCommand}"
+                CommandParameter="{Binding ElementName=TextBox, Path=Text}"/>
+
+        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                Margin="5" Padding="5"
+                Content="Close Window"
+                Command="{Binding CloseWindowCommand}"/>
+
+        <TextBox Name="TextBox" 
+                 Height="50"
+                 HorizontalAlignment="Center" VerticalAlignment="Top"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
+                 Margin="5" Padding="5"
+                 Text="Paste text here"/>
     </Grid>
 </Window>
