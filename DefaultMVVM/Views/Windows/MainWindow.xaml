@@ -1,14 +1,14 @@
 ﻿<Window x:Class="DefaultMVVM.Views.Windows.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800" Background="Gray">
 
     <Window.InputBindings>
-        <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseWindowCommand}"/>
+        <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseWindowCommand}" />
     </Window.InputBindings>
 
     <Grid>
@@ -16,18 +16,18 @@
                 Margin="5" Padding="5"
                 Content="Change title"
                 Command="{Binding ChangeTitleCommand}"
-                CommandParameter="{Binding ElementName=TextBox, Path=Text}"/>
+                CommandParameter="{Binding ElementName=TextBox, Path=Text}" />
 
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom"
                 Margin="5" Padding="5"
                 Content="Close Window"
-                Command="{Binding CloseWindowCommand}"/>
+                Command="{Binding CloseWindowCommand}" />
 
-        <TextBox Name="TextBox" 
+        <TextBox Name="TextBox"
                  Height="50"
                  HorizontalAlignment="Center" VerticalAlignment="Top"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                  Margin="5" Padding="5"
-                 Text="Paste text here"/>
+                 Text="Paste text here" />
     </Grid>
 </Window>

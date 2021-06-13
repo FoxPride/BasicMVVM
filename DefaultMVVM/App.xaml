@@ -4,8 +4,8 @@
              xmlns:vm="clr-namespace:DefaultLibrary.ViewModels;assembly=DefaultLibrary"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
-         <ResourceDictionary>
-             <vm:ViewModelLocator x:Key="Locator"/>
-         </ResourceDictionary>
+        <ResourceDictionary>
+            <vm:ViewModelLocator x:Key="Locator" />
+        </ResourceDictionary>
     </Application.Resources>
 </Application>

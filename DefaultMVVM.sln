@@ -7,11 +7,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultMVVM", "DefaultMVVM\
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{1983BA5C-304A-430B-9FD4-ADB6A50C88B5}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfTest", "Tests\WpfTest\WpfTest.csproj", "{2FE2EFCD-CC8B-4711-ACD7-3C1571B35762}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfTest", "Tests\WpfTest\WpfTest.csproj", "{2FE2EFCD-CC8B-4711-ACD7-3C1571B35762}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "Tests\ConsoleTest\ConsoleTest.csproj", "{367C3F4D-9C7A-4B66-B5C8-52920F9236BE}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ConsoleTest", "Tests\ConsoleTest\ConsoleTest.csproj", "{367C3F4D-9C7A-4B66-B5C8-52920F9236BE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DefaultLibrary", "DefaultLibrary\DefaultLibrary.csproj", "{5D167CA6-02D1-42AB-BF9D-4BFB21C75059}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DefaultLibrary", "DefaultLibrary\DefaultLibrary.csproj", "{5D167CA6-02D1-42AB-BF9D-4BFB21C75059}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
