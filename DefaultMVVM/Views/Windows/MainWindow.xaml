@@ -3,6 +3,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:enums="clr-namespace:DefaultLibrary.Infrastructure.Enums;assembly=DefaultLibrary"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800" Background="Gray">
@@ -22,6 +23,16 @@
                 Margin="5" Padding="5"
                 Content="Close Window"
                 Command="{Binding CloseWindowCommand}" />
+
+        <StackPanel Margin="5" Orientation="Horizontal"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom">
+            <Button Padding="5"
+                    Content="Open Second Window"
+                    Command="{Binding ShowWindowCommand}" CommandParameter="{x:Static enums:ViewsEnum.SecondWindow}" />
+            <Button Padding="5"
+                    Content="Open Third Window"
+                    Command="{Binding ShowWindowCommand}" CommandParameter="{x:Static enums:ViewsEnum.ThirdWindow}" />
+        </StackPanel>
 
         <TextBox Name="TextBox"
                  Height="50"

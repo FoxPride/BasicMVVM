@@ -18,6 +18,7 @@
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
             services.AddSingleton<MainWindowViewModel>();
+            services.AddSingleton<SecondWindowViewModel>();
 
             return services;
         }
