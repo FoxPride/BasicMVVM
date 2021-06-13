@@ -1,53 +1,48 @@
-﻿using System.Windows;
-using System.Windows.Input;
-using DefaultLibrary.Helpers;
-using DefaultLibrary.Services.Interfaces;
-using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.Input;
-
-namespace DefaultLibrary.ViewModels
+﻿namespace DefaultLibrary.ViewModels
 {
+    using System.Windows;
+    using System.Windows.Input;
+
+    using DefaultLibrary.Infrastructure.Enums;
+    using DefaultLibrary.Infrastructure.Messages;
+    using DefaultLibrary.Services.Interfaces;
+
+    using Microsoft.Toolkit.Mvvm.ComponentModel;
+    using Microsoft.Toolkit.Mvvm.DependencyInjection;
+    using Microsoft.Toolkit.Mvvm.Input;
+    using Microsoft.Toolkit.Mvvm.Messaging;
+
     public class MainWindowViewModel : ObservableObject
     {
         /// <summary>
-        /// Gets the <see cref="ILogger"/> instance to use.
+        ///     Gets the <see cref="ILogger" /> instance to use.
         /// </summary>
-        private readonly ILogger _loggerService = Ioc.Default.GetRequiredService<ILogger>();
+        private readonly ILogger loggerService = Ioc.Default.GetRequiredService<ILogger>();
+
+        private string title = "Main window";
 
         public MainWindowViewModel()
         {
-            ChangeTitleCommand = new RelayCommand<string>(UpdateTitle);
-            CloseWindowCommand = new RelayCommand(CloseWindow);
+            this.ChangeTitleCommand = new RelayCommand<string>(this.UpdateTitle);
+            this.CloseWindowCommand = new RelayCommand(this.CloseWindow);
+            this.ShowWindowCommand = new RelayCommand<ViewsEnum>(this.ShowWindow);
 
-            _loggerService.Log("Logged");
+            this.loggerService.Log("Logged");
+
+            WeakReferenceMessenger.Default.Register<UpdateTitleMessage>(this, this.UpdateTitleMessageReceived);
         }
 
-        #region Title : string - Window title
-
-        private string _title = "Main window";
-
-        /// <summary>Window title</summary>
-        public string Title
-        {
-            get => _title;
-            set => SetProperty(ref _title, value);
-        }
-
-        #endregion
-
-        #region Commands
         public ICommand ChangeTitleCommand { get; }
 
         public ICommand CloseWindowCommand { get; }
 
-        #endregion
+        public ICommand ShowWindowCommand { get; }
 
-        #region Methods
-
-        private void UpdateTitle(string title)
+        /// <summary>Window title</summary>
+        public string Title
         {
-            Title = title;
+            get => this.title;
+            set => this.SetProperty(ref this.title, value);
         }
 
         private void CloseWindow()
@@ -55,6 +50,19 @@ namespace DefaultLibrary.ViewModels
             Application.Current.Shutdown();
         }
 
-        #endregion
+        private void ShowWindow(ViewsEnum view)
+        {
+            WeakReferenceMessenger.Default.Send(new ShowWindowMessage(view));
+        }
+
+        private void UpdateTitle(string title)
+        {
+            this.Title = title;
+        }
+
+        private void UpdateTitleMessageReceived(object recipient, UpdateTitleMessage message)
+        {
+            this.UpdateTitle(message.Title);
+        }
     }
 }
