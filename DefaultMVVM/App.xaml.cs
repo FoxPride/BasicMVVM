@@ -1,4 +1,10 @@
-﻿namespace DefaultMVVM
+﻿// --------------------------------------------------------------------------------------------------------------------
+// <copyright file="App.xaml.cs" company="Monosnap Inc.">
+//   Andrew Baiderin © 2021
+// </copyright>
+// --------------------------------------------------------------------------------------------------------------------
+
+namespace DefaultMVVM
 {
     using System.Windows;
 
@@ -12,17 +18,24 @@
     /// <summary>
     ///     Provides application-specific behavior to supplement the default <see cref="Application" /> class.
     /// </summary>
-    sealed partial class App
+    public sealed partial class App
     {
         /// <summary>
-        ///     Initializes the singleton application object. This is the first line of authored code
-        ///     executed, and as such is the logical equivalent of main() or WinMain().
+        /// Initializes a new instance of the <see cref="App"/> class.
+        /// This is the first line of authored code
+        /// executed, and as such is the logical equivalent of main() or WinMain().
         /// </summary>
         public App()
         {
             this.InitializeComponent();
         }
 
+        /// <summary>
+        /// Overridden startup method for registering services and marking that the application is no longer in designer mode.
+        /// </summary>
+        /// <param name="e">
+        /// Contains the arguments for the Startup event.
+        /// </param>
         protected override void OnStartup(StartupEventArgs e)
         {
             base.OnStartup(e);
