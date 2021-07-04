@@ -1,13 +1,7 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="Program.cs" company="Monosnap Inc.">
-//   Andrew Baiderin © 2021
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
+﻿using System;
 
 namespace ConsoleTest
 {
-    using System;
-
     /// <summary>
     /// Console project for tests.
     /// </summary>

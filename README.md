@@ -1,15 +1,32 @@
-# DefaultMVVM
-Repository with default MVVM structure:
+# Basic MVVM
 
-Data - all data from any source (database, etc.)  
-Models - models for mvvm  
-ViewModels - viewmodels for mvvm  
-Helpers - helpers for project  
-Infrastructure - all kind of extensions   
-Services - business logic (parse data, communication, financial operations)  
-Views - views for mvvm  
-Resources - project resources  
+Состоит из следующих частей: Core Project, UI Project (WPF), Tests
 
-Test projects:  
-**ConsoleTest** - console project for tests  
-**WpfTest** - wpf project for tests  
+Core Project реализует MVVM подход с использованием Microsoft.MVVM.Toolkit и базовую структуру проекта:
+
+- **Data** - сюда складируются классы для получения данных каким-либо путём (база данных, онлайн и т.д.)
+- **Models** - здесь хранятся все модели приложения (**M**VVM)
+- **ViewModels** - здесь хранятся все модели представлений (MV**VM**)
+- **Helpers** - классы-помощники
+- **Infrastructure** - расширения функционала приложения
+- **Services** - бизнес логика приложения
+- **Views** - представления (M**V**VM)
+- **Resources** - ресурсы проекта
+  
+### **Core Project** реализует:
+- Встраивание команд через делегаты 
+- Систему навигации с примерами 
+- Систему нотификаций между моделями представлений
+- Интерфейсы:
+  - Обновление клиента (через Squirrel)
+  - Логирование (через NLog)
+
+### **Папка Tests содержит**:
+- Тестовые проекты
+  - **ConsoleTest** - консольный проект для тестов
+  - **WpfTest** - wpf проект для тестов    
+- Юнит-тесты для проекта
+
+### **UI Project** реализует: 
+- Dependency Injection
+- Хранит представления проекта 
