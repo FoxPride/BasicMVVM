@@ -1,10 +1,4 @@
-﻿// --------------------------------------------------------------------------------------------------------------------
-// <copyright file="MainWindow.xaml.cs" company="Monosnap Inc.">
-//   Andrew Baiderin © 2021
-// </copyright>
-// --------------------------------------------------------------------------------------------------------------------
-
-namespace WpfTest
+﻿namespace WpfTest
 {
     /// <summary>
     /// The main window of test project.
@@ -16,7 +10,7 @@ namespace WpfTest
         /// </summary>
         public MainWindow()
         {
-            this.InitializeComponent();
+            InitializeComponent();
         }
     }
 }
