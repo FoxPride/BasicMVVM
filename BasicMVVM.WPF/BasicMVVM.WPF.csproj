@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
+    <ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
     <ProjectReference Include="..\SquirrelHelper\SquirrelHelper.csproj" />
   </ItemGroup>
 

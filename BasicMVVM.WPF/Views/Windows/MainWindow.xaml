@@ -13,7 +13,7 @@
     </Window.InputBindings>
 
     <Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TestStyle}"
                 Margin="5" Padding="5"
                 Content="Change title"
                 Command="{Binding ChangeTitleCommand}"
