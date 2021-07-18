@@ -9,11 +9,11 @@
         Title="{Binding Title}" Height="450" Width="800" Background="Gray">
 
     <Window.InputBindings>
-        <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseWindowCommand}" />
+        <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseApplicationCommand}" />
     </Window.InputBindings>
 
     <Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top"
+        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TestStyle}"
                 Margin="5" Padding="5"
                 Content="Change title"
                 Command="{Binding ChangeTitleCommand}"
@@ -22,7 +22,7 @@
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom"
                 Margin="5" Padding="5"
                 Content="Close Window"
-                Command="{Binding CloseWindowCommand}" />
+                Command="{Binding CloseApplicationCommand}" />
 
         <StackPanel Margin="5" Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Bottom">
