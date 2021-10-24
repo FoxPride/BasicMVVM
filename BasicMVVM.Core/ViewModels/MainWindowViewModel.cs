@@ -7,7 +7,6 @@ using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using SquirrelHelper;
 
 namespace BasicMVVM.Core.ViewModels
 {
@@ -44,7 +43,7 @@ namespace BasicMVVM.Core.ViewModels
             ShowWindowCommand = new RelayCommand<ViewsEnum>(ShowWindow);
 
             _loggerService.Log("Logged");
-            _updaterService.CheckUpdates();
+            _updaterService.CheckForUpdate();
         }
 
         /// <summary>

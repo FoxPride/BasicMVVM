@@ -3,7 +3,6 @@ using BasicMVVM.Core.Services.Interfaces;
 using BasicMVVM.Core.ViewModels;
 
 using Microsoft.Extensions.DependencyInjection;
-using SquirrelHelper;
 
 namespace BasicMVVM.WPF.Helpers
 {

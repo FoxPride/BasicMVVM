@@ -1,7 +1,7 @@
 ﻿using System.Windows;
 
 using BasicMVVM.Core.Helpers;
-
+using BasicMVVM.Core.Services.Interfaces;
 using BasicMVVM.WPF.Helpers;
 
 using Microsoft.Extensions.DependencyInjection;
@@ -14,6 +14,11 @@ namespace BasicMVVM.WPF
     /// </summary>
     public sealed partial class App
     {
+        /// <summary>
+        ///     Gets the <see cref="IUpdater" /> instance to use.
+        /// </summary>
+        private readonly IUpdater _updaterService = Ioc.Default.GetRequiredService<IUpdater>();
+
         /// <summary>
         /// Initializes a new instance of the <see cref="App"/> class.
         /// This is the first line of authored code
@@ -38,6 +43,8 @@ namespace BasicMVVM.WPF
                 .RegisterViewModels()
                 .RegisterServices()
                 .BuildServiceProvider());
+
+            _updaterService.StartActions();
 
             DesignerProperties.IsDesignMode = false;
         }
