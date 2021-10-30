@@ -1,11 +1,14 @@
-﻿using System.Windows;
+﻿using System;
+using System.IO;
+using System.Runtime.CompilerServices;
+using System.Windows;
 
 using BasicMVVM.Core.Helpers;
 using BasicMVVM.Core.Services.Interfaces;
 using BasicMVVM.WPF.Helpers;
 
 using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
+using Microsoft.Extensions.Hosting;
 
 namespace BasicMVVM.WPF
 {
@@ -14,10 +17,7 @@ namespace BasicMVVM.WPF
     /// </summary>
     public sealed partial class App
     {
-        /// <summary>
-        ///     Gets the <see cref="IUpdater" /> instance to use.
-        /// </summary>
-        private readonly IUpdater _updaterService = Ioc.Default.GetRequiredService<IUpdater>();
+        private static IHost _host;
 
         /// <summary>
         /// Initializes a new instance of the <see cref="App"/> class.
@@ -27,6 +27,7 @@ namespace BasicMVVM.WPF
         public App()
         {
             InitializeComponent();
+            HostHelper.Host = _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
         }
 
         /// <summary>
@@ -35,18 +36,45 @@ namespace BasicMVVM.WPF
         /// <param name="e">
         /// Contains the arguments for the Startup event.
         /// </param>
-        protected override void OnStartup(StartupEventArgs e)
+        protected override async void OnStartup(StartupEventArgs e)
         {
+            var host = HostHelper.Host;
             base.OnStartup(e);
 
-            Ioc.Default.ConfigureServices(new ServiceCollection()
-                .RegisterViewModels()
-                .RegisterServices()
-                .BuildServiceProvider());
+            await host.StartAsync().ConfigureAwait(false);
 
-            _updaterService.StartActions();
+            HostHelper.Host.Services.GetRequiredService<IUpdater>().StartActions();
 
             DesignerProperties.IsDesignMode = false;
         }
+
+        /// <summary>
+        /// Overridden exit method to stop and dispose host.
+        /// </summary>
+        /// <param name="e">
+        /// Contains the arguments for the Exit event.
+        /// </param>
+        protected override async void OnExit(ExitEventArgs e)
+        {
+            base.OnExit(e);
+
+            var host = HostHelper.Host;
+            await host.StopAsync().ConfigureAwait(false);
+            host.Dispose();
+            _host = null;
+        }
+
+        public static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
+            .RegisterServices()
+            .RegisterViewModels();
+
+        /// <summary>
+        /// Gets current working directory for app.
+        /// </summary>
+        public static string CurrentDirectory => DesignerProperties.IsDesignMode
+            ? Path.GetDirectoryName(GetSourceCodePath())
+            : Environment.CurrentDirectory;
+
+        private static string GetSourceCodePath([CallerFilePath] string path = null) => path;
     }
 }

@@ -4,7 +4,7 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>net5.0-windows</TargetFramework>
     <UseWPF>true</UseWPF>
-    <StartupObject></StartupObject>
+    <StartupObject>BasicMVVM.WPF.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
@@ -14,6 +14,12 @@
   <ItemGroup>
     <ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
     <ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
 
 </Project>

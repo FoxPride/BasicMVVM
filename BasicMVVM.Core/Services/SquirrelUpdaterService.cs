@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using BasicMVVM.Core.Services.Interfaces;
+using Microsoft.Extensions.Configuration;
 using Squirrel;
 
 namespace BasicMVVM.Core.Services
@@ -10,13 +11,25 @@ namespace BasicMVVM.Core.Services
     /// </summary>
     public class SquirrelUpdaterService : IUpdater
     {
-        private const string UpdateUrl = @"https://the.place/you-host/updates"; //todo get from appsettings
+        /// <summary>
+        ///     Gets the <see cref="IConfiguration" /> instance to use.
+        /// </summary>
+        private readonly IConfiguration _config;
+
+        private static string _updateUrl;
+
+        public SquirrelUpdaterService(IConfiguration config)
+        {
+            _config = config;
+        }
 
         /// <summary>
         ///     Initialization of updater.
         /// </summary>
         public void StartActions()
         {
+            _updateUrl = _config.GetValue<string>("ConnectionStrings:UpdateUrl");
+
             SquirrelAwareApp.HandleEvents(
                 onInitialInstall: OnInstall,
                 onAppUpdate: OnUpdate,
@@ -32,7 +45,7 @@ namespace BasicMVVM.Core.Services
         /// </returns>
         public async Task CheckForUpdate()
         {
-            using var mgr = new UpdateManager(UpdateUrl);
+            using var mgr = new UpdateManager(_updateUrl);
             var newVersion = await mgr.UpdateApp();
 
             // optionally restart the app automatically, or ask the user if/when they want to restart
@@ -44,20 +57,20 @@ namespace BasicMVVM.Core.Services
 
         private static void OnInstall(Version obj)
         {
-            using var mgr = new UpdateManager(UpdateUrl);
+            using var mgr = new UpdateManager(_updateUrl);
             mgr.CreateUninstallerRegistryEntry();
             mgr.CreateShortcutForThisExe();
         }
 
         private static void OnUpdate(Version obj)
         {
-            using var mgr = new UpdateManager(UpdateUrl);
+            using var mgr = new UpdateManager(_updateUrl);
             mgr.CreateShortcutForThisExe();
         }
 
         private static void OnUninstall(Version obj)
         {
-            using var mgr = new UpdateManager(UpdateUrl);
+            using var mgr = new UpdateManager(_updateUrl);
             mgr.RemoveShortcutForThisExe();
             mgr.RemoveUninstallerRegistryEntry();
         }

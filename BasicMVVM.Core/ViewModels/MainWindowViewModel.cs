@@ -4,7 +4,6 @@ using BasicMVVM.Core.Infrastructure.Enums;
 using BasicMVVM.Core.Infrastructure.Messages;
 using BasicMVVM.Core.Services.Interfaces;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
@@ -18,12 +17,12 @@ namespace BasicMVVM.Core.ViewModels
         /// <summary>
         ///     Gets the <see cref="ILogger" /> instance to use.
         /// </summary>
-        private readonly ILogger _loggerService = Ioc.Default.GetRequiredService<ILogger>();
+        private readonly ILogger _loggerService;
 
         /// <summary>
         ///     Gets the <see cref="IUpdater" /> instance to use.
         /// </summary>
-        private readonly IUpdater _updaterService = Ioc.Default.GetRequiredService<IUpdater>();
+        private readonly IUpdater _updaterService;
 
         /// <summary>
         ///     The title of window.
@@ -33,8 +32,11 @@ namespace BasicMVVM.Core.ViewModels
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
         /// </summary>
-        public MainWindowViewModel()
+        public MainWindowViewModel(ILogger loggerService, IUpdater updaterService)
         {
+            _loggerService = loggerService;
+            _updaterService = updaterService;
+
             IsActive = true; //Activates ViewModel to get messages
 
             CloseApplicationCommand = BasicCommands.CloseApplicationCommand;
