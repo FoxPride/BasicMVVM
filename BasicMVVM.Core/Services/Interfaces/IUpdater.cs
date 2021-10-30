@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace SquirrelHelper
+namespace BasicMVVM.Core.Services.Interfaces
 {
     /// <summary>
     ///     The updater interface.
@@ -8,8 +8,13 @@ namespace SquirrelHelper
     public interface IUpdater
     {
         /// <summary>
+        ///     Method to init updater.
+        /// </summary>
+        void StartActions();
+
+        /// <summary>
         ///     Method to check for updates of the app.
         /// </summary>
-        Task CheckUpdates();
+        Task CheckForUpdate();
     }
 }
