@@ -34,11 +34,21 @@
                     Command="{Binding ShowWindowCommand}" CommandParameter="{x:Static enums:ViewsEnum.ThirdWindow}" />
         </StackPanel>
 
+        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                Margin="5" Padding="5"
+                Content="Test Button"
+                Command="{Binding CloseApplicationCommand}" />
+
         <TextBox Name="TextBox"
                  Height="50"
                  HorizontalAlignment="Center" VerticalAlignment="Top"
                  HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
                  Margin="5" Padding="5"
                  Text="Paste text here" />
+
+        <TextBlock Text="v1.0.1"
+                   Foreground="White"
+                   HorizontalAlignment="Center"
+                   VerticalAlignment="Center"/>
     </Grid>
 </Window>

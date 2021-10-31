@@ -1,4 +1,5 @@
-﻿using System.Windows.Input;
+﻿using System;
+using System.Windows.Input;
 using BasicMVVM.Core.Infrastructure.Commands;
 using BasicMVVM.Core.Infrastructure.Enums;
 using BasicMVVM.Core.Infrastructure.Messages;
@@ -40,6 +41,7 @@ namespace BasicMVVM.Core.ViewModels
             IsActive = true; //Activates ViewModel to get messages
 
             CloseApplicationCommand = BasicCommands.CloseApplicationCommand;
+            TestButtonCommand = BasicCommands.TestButtonCommand;
 
             ChangeTitleCommand = new RelayCommand<string>(UpdateTitle);
             ShowWindowCommand = new RelayCommand<ViewsEnum>(ShowWindow);
@@ -52,6 +54,11 @@ namespace BasicMVVM.Core.ViewModels
         ///     Gets the close window command.
         /// </summary>
         public ICommand CloseApplicationCommand { get; }
+
+        /// <summary>
+        ///     Button to test anything.
+        /// </summary>
+        public ICommand TestButtonCommand { get; }
 
         /// <summary>
         ///     Gets the change title command.

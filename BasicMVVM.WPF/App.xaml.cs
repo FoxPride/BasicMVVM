@@ -17,8 +17,6 @@ namespace BasicMVVM.WPF
     /// </summary>
     public sealed partial class App
     {
-        private static IHost _host;
-
         /// <summary>
         /// Initializes a new instance of the <see cref="App"/> class.
         /// This is the first line of authored code
@@ -27,7 +25,7 @@ namespace BasicMVVM.WPF
         public App()
         {
             InitializeComponent();
-            HostHelper.Host = _host ??= Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
+            HostHelper.Host = Program.CreateHostBuilder(Environment.GetCommandLineArgs()).Build();
         }
 
         /// <summary>
@@ -38,10 +36,9 @@ namespace BasicMVVM.WPF
         /// </param>
         protected override async void OnStartup(StartupEventArgs e)
         {
-            var host = HostHelper.Host;
-            base.OnStartup(e);
+            await HostHelper.Host.StartAsync().ConfigureAwait(false);
 
-            await host.StartAsync().ConfigureAwait(false);
+            base.OnStartup(e);
 
             HostHelper.Host.Services.GetRequiredService<IUpdater>().StartActions();
 
@@ -58,10 +55,9 @@ namespace BasicMVVM.WPF
         {
             base.OnExit(e);
 
-            var host = HostHelper.Host;
-            await host.StopAsync().ConfigureAwait(false);
-            host.Dispose();
-            _host = null;
+            await HostHelper.Host.StopAsync().ConfigureAwait(false);
+            HostHelper.Host.Dispose();
+            HostHelper.Host = null;
         }
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
