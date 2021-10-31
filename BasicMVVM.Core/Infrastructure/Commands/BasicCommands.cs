@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using System;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Toolkit.Mvvm.Input;
 
@@ -12,6 +13,14 @@ namespace BasicMVVM.Core.Infrastructure.Commands
             {
                 return new RelayCommand<Window>
                     (p => p?.Close());
+            }
+        }        
+        public static ICommand TestButtonCommand
+        {
+            get
+            {
+                return new RelayCommand
+                    (() => Environment.Exit(0));
             }
         }
 
