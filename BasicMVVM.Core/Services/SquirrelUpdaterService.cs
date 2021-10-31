@@ -51,7 +51,7 @@ namespace BasicMVVM.Core.Services
             // optionally restart the app automatically, or ask the user if/when they want to restart
             if (newVersion != null)
             {
-                UpdateManager.RestartApp();
+                await UpdateManager.RestartAppWhenExited();
             }
         }
 
