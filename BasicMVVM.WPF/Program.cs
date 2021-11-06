@@ -1,6 +1,7 @@
 ﻿using System;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
+using Serilog;
 
 namespace BasicMVVM.WPF
 {
@@ -21,6 +22,8 @@ namespace BasicMVVM.WPF
                    .SetBasePath(App.CurrentDirectory)
                    .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                    .AddEnvironmentVariables())
+               .UseSerilog((hostingContext, loggerConfiguration) => loggerConfiguration
+                   .ReadFrom.Configuration(hostingContext.Configuration))
                .ConfigureServices(App.ConfigureServices);
     }
 }

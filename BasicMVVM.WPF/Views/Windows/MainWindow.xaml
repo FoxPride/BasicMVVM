@@ -37,7 +37,7 @@
         <Button HorizontalAlignment="Right" VerticalAlignment="Bottom"
                 Margin="5" Padding="5"
                 Content="Test Button"
-                Command="{Binding CloseApplicationCommand}" />
+                Command="{Binding TestButtonCommand}" />
 
         <TextBox Name="TextBox"
                  Height="50"

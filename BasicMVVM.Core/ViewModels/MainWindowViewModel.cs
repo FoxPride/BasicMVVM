@@ -1,9 +1,9 @@
-﻿using System;
-using System.Windows.Input;
+﻿using System.Windows.Input;
 using BasicMVVM.Core.Infrastructure.Commands;
 using BasicMVVM.Core.Infrastructure.Enums;
 using BasicMVVM.Core.Infrastructure.Messages;
 using BasicMVVM.Core.Services.Interfaces;
+using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
@@ -18,7 +18,7 @@ namespace BasicMVVM.Core.ViewModels
         /// <summary>
         ///     Gets the <see cref="ILogger" /> instance to use.
         /// </summary>
-        private readonly ILogger _loggerService;
+        private readonly ILogger<MainWindowViewModel> _loggerService;
 
         /// <summary>
         ///     Gets the <see cref="IUpdater" /> instance to use.
@@ -33,7 +33,7 @@ namespace BasicMVVM.Core.ViewModels
         /// <summary>
         ///     Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
         /// </summary>
-        public MainWindowViewModel(ILogger loggerService, IUpdater updaterService)
+        public MainWindowViewModel(ILogger<MainWindowViewModel> loggerService, IUpdater updaterService)
         {
             _loggerService = loggerService;
             _updaterService = updaterService;
@@ -41,12 +41,12 @@ namespace BasicMVVM.Core.ViewModels
             IsActive = true; //Activates ViewModel to get messages
 
             CloseApplicationCommand = BasicCommands.CloseApplicationCommand;
-            TestButtonCommand = BasicCommands.TestButtonCommand;
 
+            TestButtonCommand = new RelayCommand(TestMethod);
             ChangeTitleCommand = new RelayCommand<string>(UpdateTitle);
             ShowWindowCommand = new RelayCommand<ViewsEnum>(ShowWindow);
 
-            _loggerService.Log("Logged");
+            _loggerService.LogInformation("Logged");
             _updaterService.CheckForUpdate();
         }
 
@@ -104,6 +104,14 @@ namespace BasicMVVM.Core.ViewModels
         private void UpdateTitle(string title)
         { 
             Title = title;
+        }
+
+        /// <summary>
+        ///     For testing purposes.
+        /// </summary>
+        private void TestMethod()
+        {
+            _loggerService.LogInformation("Logged");
         }
     }
 }
