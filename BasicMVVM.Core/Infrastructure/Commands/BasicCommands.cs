@@ -14,15 +14,7 @@ namespace BasicMVVM.Core.Infrastructure.Commands
                 return new RelayCommand<Window>
                     (p => p?.Close());
             }
-        }        
-        public static ICommand TestButtonCommand
-        {
-            get
-            {
-                return new RelayCommand
-                    (() => Environment.Exit(0));
-            }
-        }
+        }   
 
         public static ICommand CloseApplicationCommand
         {

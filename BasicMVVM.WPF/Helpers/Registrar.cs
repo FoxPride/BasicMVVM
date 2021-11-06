@@ -22,7 +22,6 @@ namespace BasicMVVM.WPF.Helpers
         /// </returns>
         public static IServiceCollection RegisterServices(this IServiceCollection services)
         {
-            services.AddSingleton<ILogger, DebugLoggerService>();
             services.AddSingleton<IUpdater, SquirrelUpdaterService>();
 
             return services;
