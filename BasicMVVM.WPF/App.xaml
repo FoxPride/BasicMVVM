@@ -7,7 +7,7 @@
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/BasicMVVM.Resources;component/ButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/BasicMVVM.Resources;component/Design/Buttons/ButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>
