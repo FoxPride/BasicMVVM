@@ -43,6 +43,8 @@ namespace BasicMVVM.WPF
             HostHelper.Host.Services.GetRequiredService<IUpdater>().StartActions();
 
             DesignerProperties.IsDesignMode = false;
+
+            LocalizationHelper.SetupLanguages();
         }
 
         /// <summary>
