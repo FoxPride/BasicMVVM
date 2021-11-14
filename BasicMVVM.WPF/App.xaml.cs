@@ -44,7 +44,7 @@ namespace BasicMVVM.WPF
 
             DesignerProperties.IsDesignMode = false;
 
-            LocalizationHelper.SetupLanguages();
+            LocalizationHelper.LoadLanguages();
         }
 
         /// <summary>

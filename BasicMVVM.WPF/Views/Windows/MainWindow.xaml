@@ -48,12 +48,17 @@
                  Margin="5" Padding="5"
                  Content="Test Button"
                  Command="{Binding TestButtonCommand}" />
-  
+
         <ComboBox HorizontalAlignment="Right" VerticalAlignment="Center"
                   Margin="5" Padding="5"
                   ItemsSource="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=MergedAvailableCultures}"
-                  SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=Culture}" 
-                  DisplayMemberPath="NativeName" />
+                  SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=Culture}">
+            <ComboBox.ItemTemplate>
+                <DataTemplate>
+                    <TextBlock Text="{lex:Loc {Binding}}"/>
+                </DataTemplate>
+            </ComboBox.ItemTemplate>
+        </ComboBox>
 
         <TextBox Name="TextBox"
                  Height="50"
