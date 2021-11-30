@@ -1,8 +1,7 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
+    <TargetFramework>net5.0</TargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
@@ -30,10 +29,6 @@
     <PackageReference Include="Serilog.Settings.Configuration" Version="3.3.0" />
     <PackageReference Include="Serilog.Sinks.Debug" Version="2.0.0" />
     <PackageReference Include="Serilog.Sinks.File" Version="5.0.0" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
   </ItemGroup>
   
 </Project>

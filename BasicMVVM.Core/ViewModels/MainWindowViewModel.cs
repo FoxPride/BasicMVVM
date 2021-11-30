@@ -1,11 +1,9 @@
-﻿using BasicMVVM.Core.Infrastructure.Commands;
-using BasicMVVM.Core.Infrastructure.Messages;
+﻿using BasicMVVM.Core.Infrastructure.Messages;
 using BasicMVVM.Core.Services.Interfaces;
 using BasicMVVM.Core.Stores;
 using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
-using System.Windows.Input;
 
 namespace BasicMVVM.Core.ViewModels
 {
@@ -23,13 +21,9 @@ namespace BasicMVVM.Core.ViewModels
 
             IsActive = true; //Activates ViewModel to get messages
 
-            CloseApplicationCommand = BasicCommands.CloseApplicationCommand;
-
             _loggerService.LogInformation("Logged");
             _updaterService.CheckForUpdate();
         }
-
-        public ICommand CloseApplicationCommand { get; }
 
         public string Title
         {

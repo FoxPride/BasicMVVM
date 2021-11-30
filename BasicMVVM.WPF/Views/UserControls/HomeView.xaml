@@ -8,6 +8,7 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:lex="http://wpflocalizeextension.codeplex.com"
              xmlns:commands="clr-namespace:BasicMVVM.Core.Infrastructure.Commands;assembly=BasicMVVM.Core"
+             xmlns:wpfCommands="clr-namespace:BasicMVVM.WPF.Infrastructure.Commands"
              xmlns:engine="https://github.com/XAMLMarkupExtensions/WPFLocalizationExtension"
              mc:Ignorable="d"
              d:DesignHeight="450" d:DesignWidth="800"
@@ -17,7 +18,8 @@
         <Button HorizontalAlignment="Left" VerticalAlignment="Bottom" Style="{StaticResource TestStyle}"
                 Margin="5" Padding="5"
                 Content="Close Window"
-                Command="{Binding CloseApplicationCommand}" />
+                Command="{Binding Source={x:Static wpfCommands:CloseWindowCommand.Close}}"
+                CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
 
         <StackPanel Margin="5" Orientation="Horizontal"
                     HorizontalAlignment="Center" VerticalAlignment="Bottom">

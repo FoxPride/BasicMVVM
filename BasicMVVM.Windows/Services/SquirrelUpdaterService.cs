@@ -1,8 +1,8 @@
-﻿using System;
-using System.Threading.Tasks;
-using BasicMVVM.Core.Services.Interfaces;
+﻿using BasicMVVM.Core.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Squirrel;
+using System;
+using System.Threading.Tasks;
 
 namespace BasicMVVM.Windows.Services
 {
