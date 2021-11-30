@@ -1,51 +1,47 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <OutputType>WinExe</OutputType>
-    <TargetFramework>net5.0-windows</TargetFramework>
-    <UseWPF>true</UseWPF>
-    <StartupObject>BasicMVVM.WPF.Program</StartupObject>
-    <NuspecFile>ReleaseSpec.nuspec</NuspecFile>
-    <Version>1.0.1</Version>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-    <OutputPath></OutputPath>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <OutputPath></OutputPath>
+	<OutputType>WinExe</OutputType>
+	<TargetFramework>net5.0-windows</TargetFramework>
+	<UseWPF>true</UseWPF>
+	<StartupObject>BasicMVVM.WPF.Program</StartupObject>
+	<NuspecFile>ReleaseSpec.nuspec</NuspecFile>
+	<Version>1.0.1</Version>
+	<PublishSingleFile>true</PublishSingleFile>
+	<SelfContained>true</SelfContained>
+	<IncludeAllContentForSelfExtract>true</IncludeAllContentForSelfExtract>
+	<RuntimeIdentifiers>win-x86;win-x64</RuntimeIdentifiers>
+	<RuntimeIdentifier>win-x64</RuntimeIdentifier>
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
-    <PackageReference Include="NuGet.CommandLine" Version="5.11.0">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="WPFLocalizeExtension" Version="3.9.1" />
+	<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="6.0.0" />
+	<PackageReference Include="NuGet.CommandLine" Version="5.11.0">
+	  <PrivateAssets>all</PrivateAssets>
+	  <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+	</PackageReference>
+	<PackageReference Include="WPFLocalizeExtension" Version="3.9.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
-    <ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
-    <ProjectReference Include="..\BasicMVVM.Windows\BasicMVVM.Windows.csproj" />
+	<ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
+	<ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
+	<ProjectReference Include="..\BasicMVVM.Windows\BasicMVVM.Windows.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="appsettings.json">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
+	<None Update="appsettings.json">
+	  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	</None>
   </ItemGroup>
-
+	
   <Target Name="PostBuild" AfterTargets="Build" Condition=" '$(Configuration)' == 'Release'">
-    <GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
-      <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
-    </GetAssemblyIdentity>
-    <Exec Command="nuget pack ReleaseSpec.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory $(OutDir) -BasePath $(OutDir)" />
-    <Exec Command="squirrel --releasify $(OutDir)MVVMTemplate.$([System.Version]::Parse(%(myAssemblyInfo.Version)).ToString(3)).nupkg" />
+	<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
+	  <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
+	</GetAssemblyIdentity>
+	<Exec Command="dotnet publish --no-build -p:PublishProfile=FolderProfile" />
+	<Exec Command="nuget pack ReleaseSpec.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory $(SolutionDir)Deploy\publish -BasePath $(SolutionDir)Deploy\publish" />
+	<Exec Command="squirrel --releasify $(SolutionDir)Deploy\publish\MVVMTemplate.$([System.Version]::Parse(%(myAssemblyInfo.Version)).ToString(3)).nupkg --framework-version=net5 --releaseDir=$(SolutionDir)Deploy" />
   </Target>
 
 </Project>
