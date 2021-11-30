@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using BasicMVVM.Resources;
+﻿using BasicMVVM.Resources;
 using BasicMVVM.Resources.Strings;
+using System.Globalization;
 using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Providers;
 

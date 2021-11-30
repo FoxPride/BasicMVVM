@@ -1,5 +1,4 @@
 ﻿<Window x:Class="BasicMVVM.WPF.Views.Windows.MainWindow"
-        xmlns:lex="http://wpflocalizeextension.codeplex.com"
         lex:LocalizeDictionary.DesignCulture="en"
         lex:ResxLocalizationProvider.DefaultAssembly="BasicMVVM.Resources"
         lex:ResxLocalizationProvider.DefaultDictionary="Strings"
@@ -7,7 +6,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        xmlns:enums="clr-namespace:BasicMVVM.Core.Infrastructure.Enums;assembly=BasicMVVM.Core"
+        xmlns:lex="http://wpflocalizeextension.codeplex.com"
+        xmlns:vms="clr-namespace:BasicMVVM.Core.ViewModels;assembly=BasicMVVM.Core"
+        xmlns:userControls="clr-namespace:BasicMVVM.WPF.Views.UserControls"
         mc:Ignorable="d"
         DataContext="{Binding MainWindowModel, Source={StaticResource Locator}}"
         Title="{Binding Title}" Height="450" Width="800" Background="Gray">
@@ -16,60 +17,18 @@
         <KeyBinding Modifiers="Alt" Key="Q" Command="{Binding CloseApplicationCommand}" />
     </Window.InputBindings>
 
-    <Grid>
-        <Button HorizontalAlignment="Left" VerticalAlignment="Top" Style="{StaticResource TestStyle}"
-                Margin="5" Padding="5"
-                Content="Change title"
-                Command="{Binding ChangeTitleCommand}"
-                CommandParameter="{Binding ElementName=TextBox, Path=Text}" />
-
-        <Button HorizontalAlignment="Left" VerticalAlignment="Bottom"
-                Margin="5" Padding="5"
-                Content="Close Window"
-                Command="{Binding CloseApplicationCommand}" />
-
-        <StackPanel Margin="5" Orientation="Horizontal"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Padding="5"
-                    Content="Open Second Window"
-                    Command="{Binding ShowWindowCommand}" CommandParameter="{x:Static enums:ViewsEnum.SecondWindow}" />
-            <Button Padding="5"
-                    Content="Open Third Window"
-                    Command="{Binding ShowWindowCommand}" CommandParameter="{x:Static enums:ViewsEnum.ThirdWindow}" />
-        </StackPanel>
-
-
-        <Button HorizontalAlignment="Right" VerticalAlignment="Bottom"
-                Margin="5" Padding="5"
-                Content="Test Button"
-                Command="{Binding TestButtonCommand}" />
-
-        <Button  HorizontalAlignment="Right" VerticalAlignment="Center"
-                 Margin="5" Padding="5"
-                 Content="Test Button"
-                 Command="{Binding TestButtonCommand}" />
-
-        <ComboBox HorizontalAlignment="Right" VerticalAlignment="Center"
-                  Margin="5" Padding="5"
-                  ItemsSource="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=MergedAvailableCultures}"
-                  SelectedItem="{Binding Source={x:Static lex:LocalizeDictionary.Instance}, Path=Culture}">
-            <ComboBox.ItemTemplate>
-                <DataTemplate>
-                    <TextBlock Text="{lex:Loc {Binding}}"/>
-                </DataTemplate>
-            </ComboBox.ItemTemplate>
-        </ComboBox>
-
-        <TextBox Name="TextBox"
-                 Height="50"
-                 HorizontalAlignment="Center" VerticalAlignment="Top"
-                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center"
-                 Margin="5" Padding="5"
-                 Text="{lex:Loc Paste_Text}" />
-
-        <TextBlock Text="v1.0.1"
-                   Foreground="White"
-                   HorizontalAlignment="Center"
-                   VerticalAlignment="Center"/>
-    </Grid>
+    <ScrollViewer VerticalScrollBarVisibility="Auto">
+        <Grid MaxWidth="600" Margin="20 10">
+            <ContentControl Content="{Binding CurrentViewModel}">
+                <ContentControl.Resources>
+                    <DataTemplate DataType="{x:Type vms:HomeViewModel}">
+                        <userControls:HomeView />
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type vms:ChangeTitleViewModel}">
+                        <userControls:ChangeTitleView />
+                    </DataTemplate>
+                </ContentControl.Resources>
+            </ContentControl>
+        </Grid>
+    </ScrollViewer>
 </Window>

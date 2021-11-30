@@ -8,14 +8,10 @@ namespace BasicMVVM.Core.ViewModels
     /// </summary>
     public class ViewModelLocator
     {
-        /// <summary>
-        ///     Retrieves main window view model.
-        /// </summary>
         public MainWindowViewModel MainWindowModel => HostHelper.Host.Services.GetRequiredService<MainWindowViewModel>();
 
-        /// <summary>
-        ///     Retrieves second window view model.
-        /// </summary>
-        public SecondWindowViewModel SecondWindowModel => HostHelper.Host.Services.GetRequiredService<SecondWindowViewModel>();
+        public HomeViewModel HomeViewModel => HostHelper.Host.Services.GetRequiredService<HomeViewModel>();
+
+        public ChangeTitleViewModel ChangeTitleViewModel => HostHelper.Host.Services.GetRequiredService<ChangeTitleViewModel>();
     }
 }

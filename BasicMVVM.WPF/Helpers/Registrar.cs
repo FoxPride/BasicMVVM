@@ -1,7 +1,6 @@
 ﻿using BasicMVVM.Core.Services;
 using BasicMVVM.Core.Services.Interfaces;
 using BasicMVVM.Core.ViewModels;
-
 using Microsoft.Extensions.DependencyInjection;
 
 namespace BasicMVVM.WPF.Helpers
@@ -39,7 +38,8 @@ namespace BasicMVVM.WPF.Helpers
         public static IServiceCollection RegisterViewModels(this IServiceCollection services)
         {
             services.AddSingleton<MainWindowViewModel>();
-            services.AddSingleton<SecondWindowViewModel>();
+            services.AddSingleton<HomeViewModel>();
+            services.AddSingleton<ChangeTitleViewModel>();
 
             return services;
         }

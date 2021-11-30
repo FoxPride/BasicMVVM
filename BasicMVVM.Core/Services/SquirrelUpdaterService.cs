@@ -1,13 +1,13 @@
-﻿using System;
-using System.Threading.Tasks;
-using BasicMVVM.Core.Services.Interfaces;
+﻿using BasicMVVM.Core.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Squirrel;
+using System;
+using System.Threading.Tasks;
 
 namespace BasicMVVM.Core.Services
 {
     /// <summary>
-    ///     Updater service with squirrel library.
+    ///     Updater service with <see href="https://github.com/Squirrel/Squirrel.Windows">squirrel library</see>.
     /// </summary>
     public class SquirrelUpdaterService : IUpdater
     {
@@ -38,11 +38,8 @@ namespace BasicMVVM.Core.Services
         }
 
         /// <summary>
-        ///     Checks for updates.
+        ///     Checks for updates of the app.
         /// </summary>
-        /// <returns>
-        ///     The <see cref="Task" />.
-        /// </returns>
         public async Task CheckForUpdate()
         {
             using var mgr = new UpdateManager(_updateUrl);
