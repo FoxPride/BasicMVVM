@@ -1,14 +1,12 @@
-﻿using System;
+﻿using BasicMVVM.Core.Helpers;
+using BasicMVVM.Core.Services.Interfaces;
+using BasicMVVM.WPF.Helpers;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using System;
 using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
-
-using BasicMVVM.Core.Helpers;
-using BasicMVVM.Core.Services.Interfaces;
-using BasicMVVM.WPF.Helpers;
-
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.Hosting;
 
 namespace BasicMVVM.WPF
 {

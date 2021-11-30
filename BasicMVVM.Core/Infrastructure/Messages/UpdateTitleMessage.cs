@@ -3,7 +3,7 @@
 namespace BasicMVVM.Core.Infrastructure.Messages
 {
     /// <summary>
-    /// Helper class for <see cref="SecondWindowViewModel" /> class to change title.
+    /// Helper class for <see cref="ChangeTitleViewModel" /> class to change title of main window.
     /// </summary>
     public class UpdateTitleMessage
     {

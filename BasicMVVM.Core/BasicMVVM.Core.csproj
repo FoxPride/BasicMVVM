@@ -11,9 +11,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Resources\**" />
+    <EmbeddedResource Remove="Resources\**" />
+    <None Remove="Resources\**" />
+    <Page Remove="Resources\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="Data\" />
+    <Folder Include="Infrastructure\Enums\" />
     <Folder Include="Models\" />
-    <Folder Include="Resources\" />
   </ItemGroup>
 
   <ItemGroup>

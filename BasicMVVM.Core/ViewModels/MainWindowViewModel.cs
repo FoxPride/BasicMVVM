@@ -1,38 +1,21 @@
-﻿using System.Windows.Input;
-using BasicMVVM.Core.Infrastructure.Commands;
-using BasicMVVM.Core.Infrastructure.Enums;
+﻿using BasicMVVM.Core.Infrastructure.Commands;
 using BasicMVVM.Core.Infrastructure.Messages;
 using BasicMVVM.Core.Services.Interfaces;
+using BasicMVVM.Core.Stores;
 using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
+using System.Windows.Input;
 
 namespace BasicMVVM.Core.ViewModels
 {
-    /// <summary>
-    ///     The main window view model.
-    /// </summary>
-    public class MainWindowViewModel : ObservableRecipient, IRecipient<UpdateTitleMessage>
+    public class MainWindowViewModel : ObservableRecipient, IRecipient<UpdateTitleMessage>, IRecipient<UpdateViewModelMessage>
     {
-        /// <summary>
-        ///     Gets the <see cref="ILogger" /> instance to use.
-        /// </summary>
         private readonly ILogger<MainWindowViewModel> _loggerService;
-
-        /// <summary>
-        ///     Gets the <see cref="IUpdater" /> instance to use.
-        /// </summary>
         private readonly IUpdater _updaterService;
 
-        /// <summary>
-        ///     The title of window.
-        /// </summary>
         private string _title = "Main window";
 
-        /// <summary>
-        ///     Initializes a new instance of the <see cref="MainWindowViewModel" /> class.
-        /// </summary>
         public MainWindowViewModel(ILogger<MainWindowViewModel> loggerService, IUpdater updaterService)
         {
             _loggerService = loggerService;
@@ -42,76 +25,39 @@ namespace BasicMVVM.Core.ViewModels
 
             CloseApplicationCommand = BasicCommands.CloseApplicationCommand;
 
-            TestButtonCommand = new RelayCommand(TestMethod);
-            ChangeTitleCommand = new RelayCommand<string>(UpdateTitle);
-            ShowWindowCommand = new RelayCommand<ViewsEnum>(ShowWindow);
-
             _loggerService.LogInformation("Logged");
             _updaterService.CheckForUpdate();
         }
 
-        /// <summary>
-        ///     Gets the close window command.
-        /// </summary>
         public ICommand CloseApplicationCommand { get; }
 
-        /// <summary>
-        ///     Button to test anything.
-        /// </summary>
-        public ICommand TestButtonCommand { get; }
-
-        /// <summary>
-        ///     Gets the change title command.
-        /// </summary>
-        public ICommand ChangeTitleCommand { get; }
-
-        /// <summary>
-        ///     Gets the show window command.
-        /// </summary>
-        public ICommand ShowWindowCommand { get; }
-
-        /// <summary>
-        ///     Gets or sets the title.
-        /// </summary>
         public string Title
         {
             get => _title;
             set => SetProperty(ref _title, value);
         }
-        
+
+        public ObservableObject CurrentViewModel => NavigationStore.CurrentViewModel;
+
+        /// <summary>
+        ///     Handles received message.
+        /// </summary>
         public void Receive(UpdateTitleMessage message)
         {
             UpdateTitle(message.Title);
         }
 
         /// <summary>
-        ///     Sends message to show window.
+        ///     Handles received message.
         /// </summary>
-        /// <param name="view">
-        ///     The view from views enumeration.
-        /// </param>
-        private void ShowWindow(ViewsEnum view)
+        public void Receive(UpdateViewModelMessage message)
         {
-            WeakReferenceMessenger.Default.Send(new ShowWindowMessage(view));
+            OnPropertyChanged(nameof(CurrentViewModel));
         }
 
-        /// <summary>
-        ///     Updates title.
-        /// </summary>
-        /// <param name="title">
-        ///     The title.
-        /// </param>
         private void UpdateTitle(string title)
-        { 
-            Title = title;
-        }
-
-        /// <summary>
-        ///     For testing purposes.
-        /// </summary>
-        private void TestMethod()
         {
-            _loggerService.LogInformation("Logged");
+            Title = title;
         }
     }
 }
