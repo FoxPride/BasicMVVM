@@ -5,11 +5,6 @@
     <UseWPF>true</UseWPF>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-    <DebugType>none</DebugType>
-    <DebugSymbols>false</DebugSymbols>
-  </PropertyGroup>
-
   <ItemGroup>
     <Compile Update="Strings\Strings.Designer.cs">
       <DesignTime>True</DesignTime>
