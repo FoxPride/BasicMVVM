@@ -1,10 +1,10 @@
-﻿using BasicMVVM.Core.Services.Interfaces;
+﻿using System;
+using System.Threading.Tasks;
+using BasicMVVM.Core.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Squirrel;
-using System;
-using System.Threading.Tasks;
 
-namespace BasicMVVM.Core.Services
+namespace BasicMVVM.Windows.Services
 {
     /// <summary>
     ///     Updater service with <see href="https://github.com/Squirrel/Squirrel.Windows">squirrel library</see>.
@@ -33,8 +33,7 @@ namespace BasicMVVM.Core.Services
             SquirrelAwareApp.HandleEvents(
                 onInitialInstall: OnInstall,
                 onAppUpdate: OnUpdate,
-                onAppUninstall: OnUninstall,
-                onFirstRun: OnFirstRun);
+                onAppUninstall: OnUninstall);
         }
 
         /// <summary>
@@ -70,11 +69,6 @@ namespace BasicMVVM.Core.Services
             using var mgr = new UpdateManager(_updateUrl);
             mgr.RemoveShortcutForThisExe();
             mgr.RemoveUninstallerRegistryEntry();
-        }
-
-        private static void OnFirstRun()
-        {
-            //todo show welcome window
         }
     }
 }

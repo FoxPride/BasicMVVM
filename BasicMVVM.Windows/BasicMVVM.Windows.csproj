@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0-windows</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Clowd.Squirrel" Version="2.2.5-pre" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
+  </ItemGroup>
+
+</Project>
