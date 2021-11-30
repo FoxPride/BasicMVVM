@@ -6,26 +6,31 @@ using System.Threading.Tasks;
 
 namespace BasicMVVM.Windows.Services
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
-    ///     Updater service with <see href="https://github.com/Squirrel/Squirrel.Windows">squirrel library</see>.
+    /// Updater service with <see href="https://github.com/Squirrel/Squirrel.Windows">squirrel
+    /// library</see>.
     /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public class SquirrelUpdaterService : IUpdater
     {
-        /// <summary>
-        ///     Gets the <see cref="IConfiguration" /> instance to use.
-        /// </summary>
         private readonly IConfiguration _config;
 
         private static string _updateUrl;
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="config">   The configuration. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public SquirrelUpdaterService(IConfiguration config)
         {
             _config = config;
         }
 
-        /// <summary>
-        ///     Initialization of updater.
-        /// </summary>
+        /// <summary>   Initialization of updater. </summary>
         public void StartActions()
         {
             _updateUrl = _config.GetValue<string>("ConnectionStrings:UpdateUrl");
@@ -36,9 +41,12 @@ namespace BasicMVVM.Windows.Services
                 onAppUninstall: OnUninstall);
         }
 
-        /// <summary>
-        ///     Checks for updates of the app.
-        /// </summary>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Checks for updates of the app. </summary>
+        ///
+        /// <returns>   The <see cref="Task" />. </returns>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public async Task CheckForUpdate()
         {
             using var mgr = new UpdateManager(_updateUrl);

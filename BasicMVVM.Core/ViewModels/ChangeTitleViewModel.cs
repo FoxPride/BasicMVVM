@@ -6,6 +6,7 @@ using System.Windows.Input;
 
 namespace BasicMVVM.Core.ViewModels
 {
+    /// <summary>   A ViewModel for the change title via <see cref="WeakReferenceMessenger"/>. </summary>
     public class ChangeTitleViewModel : ObservableObject
     {
         public ChangeTitleViewModel()
@@ -15,9 +16,6 @@ namespace BasicMVVM.Core.ViewModels
 
         public ICommand ChangeTitleCommand { get; }
 
-        /// <summary>
-        ///     Sends message to update main window title.
-        /// </summary>
         private void UpdateTitle(string title)
         {
             WeakReferenceMessenger.Default.Send(new UpdateTitleMessage(title));

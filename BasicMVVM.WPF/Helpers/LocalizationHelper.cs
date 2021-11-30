@@ -6,14 +6,10 @@ using WPFLocalizeExtension.Providers;
 
 namespace BasicMVVM.WPF.Helpers
 {
-    /// <summary>
-    ///     A helper <see langword="class" /> for UI language setup.
-    /// </summary>
+    /// <summary>   A helper <see langword="class" /> for UI language setup. </summary>
     public static class LocalizationHelper
     {
-        /// <summary>
-        ///     Loads culture list from resources and sets app language.
-        /// </summary>
+        /// <summary>   Loads culture list from resources and sets app language. </summary>
         public static void LoadLanguages()
         {
             var resources = typeof(ResourcesMain).Namespace;
@@ -25,12 +21,12 @@ namespace BasicMVVM.WPF.Helpers
             SetAppLanguage(CultureInfo.CurrentUICulture);
         }
 
-        /// <summary>
-        ///     Sets UI app language according to passed culture parameter.
-        /// </summary>
-        /// <param name="currentCulture">
-        ///     Culture to look for in merged cultures from resources.
-        /// </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Sets UI app language according to passed culture parameter. </summary>
+        ///
+        /// <param name="currentCulture">   Culture to look for in merged cultures from resources. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         private static void SetAppLanguage(CultureInfo currentCulture)
         {
             var cultureList = LocalizeDictionary.Instance.MergedAvailableCultures;
