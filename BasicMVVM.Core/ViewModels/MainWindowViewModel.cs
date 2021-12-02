@@ -7,12 +7,20 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace BasicMVVM.Core.ViewModels
 {
+    /// <summary>   A ViewModel for the main window. </summary>
     public class MainWindowViewModel : ObservableRecipient, IRecipient<UpdateTitleMessage>, IRecipient<UpdateViewModelMessage>
     {
         private readonly ILogger<MainWindowViewModel> _loggerService;
         private readonly IUpdater _updaterService;
 
         private string _title = "Main window";
+
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Constructor. </summary>
+        ///
+        /// <param name="loggerService">    The logger service. </param>
+        /// <param name="updaterService">   The updater service. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
 
         public MainWindowViewModel(ILogger<MainWindowViewModel> loggerService, IUpdater updaterService)
         {
@@ -33,17 +41,23 @@ namespace BasicMVVM.Core.ViewModels
 
         public ObservableObject CurrentViewModel => NavigationStore.CurrentViewModel;
 
-        /// <summary>
-        ///     Handles received message.
-        /// </summary>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Handles received message <see cref="UpdateTitleMessage"/>. </summary>
+        ///
+        /// <param name="message">  The message being received. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void Receive(UpdateTitleMessage message)
         {
             UpdateTitle(message.Title);
         }
 
-        /// <summary>
-        ///     Handles received message.
-        /// </summary>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+        /// <summary>   Handles received message <see cref="UpdateViewModelMessage"/>. </summary>
+        ///
+        /// <param name="message">  The message being received. </param>
+        ////////////////////////////////////////////////////////////////////////////////////////////////////
+
         public void Receive(UpdateViewModelMessage message)
         {
             OnPropertyChanged(nameof(CurrentViewModel));

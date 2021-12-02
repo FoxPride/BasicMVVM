@@ -4,6 +4,7 @@ using System.Windows.Input;
 
 namespace BasicMVVM.WPF.Infrastructure.Commands
 {
+    /// <summary>   A command to close window. </summary>
     public static class CloseWindowCommand
     {
         static CloseWindowCommand()

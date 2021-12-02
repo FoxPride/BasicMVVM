@@ -7,9 +7,13 @@ using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace BasicMVVM.Core.Stores
 {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
-    ///     Store for saving current view model of main window. Changing current view model allows to change views with data template.
+    /// Store for saving current view model of main window. Changing current view model allows to
+    /// change views with data template.
     /// </summary>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////
+
     public static class NavigationStore
     {
         private static ObservableObject _currentViewModel;
