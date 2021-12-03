@@ -1,35 +1,27 @@
 # Basic MVVM
 
-Состоит из следующих частей: Core Project, Resources Project, UI Project (WPF), Tests
+MVVM Toolkit template for .NET 5 Desktop with DI and other basic stuff.
 
-Core Project реализует MVVM подход с использованием Microsoft.MVVM.Toolkit и базовую структуру проекта:
+## Installing / Getting started
 
-- **Data** - сюда складируются классы для получения данных каким-либо путём (база данных, онлайн и т.д.)
-- **Models** - здесь хранятся все модели приложения (**M**VVM)
-- **ViewModels** - здесь хранятся все модели представлений (MV**VM**)
-- **Helpers** - классы-помощники
-- **Infrastructure** - расширения функционала приложения
-- **Services** - бизнес логика приложения
-- **Views** - представления (M**V**VM)
-- **Resources** - ресурсы проекта
-  
-### **Core Project** реализует:
-- Встраивание команд через делегаты 
-- Систему навигации с примерами 
-- Систему нотификаций между моделями представлений
-- Интерфейсы:
-  - Обновление клиента (через Squirrel)
-  - Логирование (через NLog)
+Copy the MVVMToolkitNET5.zip file from Releases page into the user project template directory. By default, this directory is ```%USERPROFILE%\Documents\Visual Studio <version>\Templates\ProjectTemplates```.
 
-### **Resources Project**:
-- Хранит все стили проекта
+### Initial Configuration
 
-### **Папка Tests содержит**:
-- Тестовые проекты
-  - **ConsoleTest** - консольный проект для тестов
-  - **WpfTest** - wpf проект для тестов    
-- Юнит-тесты для проекта
+After creating project from template edit two files in **WPF** project for your needs: **appsettings.json** (serilog section and UpdateUrl path for updater, for example, full path to ```SolutionDir\Deploy```) and **ReleaseSpec.nuspec** (copyright, authors, description).
 
-### **UI Project** реализует: 
-- Dependency Injection
-- Хранит представления проекта 
+## Features
+
+- Easy setup for new project with basic needs
+- Navigation system
+- Following MVVM Design Pattern
+- [Serilog](https://github.com/serilog/serilog) - Logging
+- [Squirrel](https://github.com/clowd/Clowd.Squirrel) - Updater
+- [Microsoft.Toolkit.Mvvm](https://github.com/CommunityToolkit/dotnet) - MVVM Toolkit
+- [WPFLocalizeExtension](https://github.com/XAMLMarkupExtensions/WPFLocalizeExtension) - Localization
+- Dependency Injection with Microsoft.Extensions.DependencyInjection
+- Project publish, pack and release using [Squirrel flow](https://github.com/clowd/Clowd.Squirrel/blob/develop/docs/readme.md)
+
+## Licensing
+
+[MIT License](https://github.com/FoxPride/BasicMVVM/blob/master/LICENSE)
