@@ -1,6 +1,6 @@
-﻿using BasicMVVM.Core.ViewModels;
+﻿using $ext_safeprojectname$.Core.ViewModels;
 
-namespace BasicMVVM.Core.Infrastructure.Messages
+namespace $ext_safeprojectname$.Core.Infrastructure.Messages
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>

@@ -1,10 +1,10 @@
-﻿using BasicMVVM.Resources;
-using BasicMVVM.Resources.Strings;
+﻿using $ext_safeprojectname$.Resources;
+using $ext_safeprojectname$.Resources.Strings;
 using System.Globalization;
 using WPFLocalizeExtension.Engine;
 using WPFLocalizeExtension.Providers;
 
-namespace BasicMVVM.WPF.Helpers
+namespace $ext_safeprojectname$.WPF.Helpers
 {
     /// <summary>   A helper <see langword="class" /> for UI language setup. </summary>
     public static class LocalizationHelper

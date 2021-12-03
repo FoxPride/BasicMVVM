@@ -1,6 +1,6 @@
-﻿using BasicMVVM.Core.Helpers;
-using BasicMVVM.Core.Services.Interfaces;
-using BasicMVVM.WPF.Helpers;
+﻿using $ext_safeprojectname$.Core.Helpers;
+using $ext_safeprojectname$.Core.Services.Interfaces;
+using $ext_safeprojectname$.WPF.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
@@ -8,7 +8,7 @@ using System.IO;
 using System.Runtime.CompilerServices;
 using System.Windows;
 
-namespace BasicMVVM.WPF
+namespace $ext_safeprojectname$.WPF
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>

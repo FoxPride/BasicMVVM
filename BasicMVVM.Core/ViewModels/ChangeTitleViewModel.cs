@@ -1,10 +1,10 @@
-﻿using BasicMVVM.Core.Infrastructure.Messages;
+﻿using $ext_safeprojectname$.Core.Infrastructure.Messages;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using Microsoft.Toolkit.Mvvm.Messaging;
 using System.Windows.Input;
 
-namespace BasicMVVM.Core.ViewModels
+namespace $ext_safeprojectname$.Core.ViewModels
 {
     /// <summary>   A ViewModel for the change title via <see cref="WeakReferenceMessenger"/>. </summary>
     public class ChangeTitleViewModel : ObservableObject

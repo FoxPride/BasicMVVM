@@ -1,13 +1,13 @@
-﻿<Application x:Class="BasicMVVM.WPF.App"
+﻿<Application x:Class="$ext_safeprojectname$.WPF.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-             xmlns:vm="clr-namespace:BasicMVVM.Core.ViewModels;assembly=BasicMVVM.Core"
+             xmlns:vm="clr-namespace:$ext_safeprojectname$.Core.ViewModels;assembly=$ext_safeprojectname$.Core"
              StartupUri="Views/Windows/MainWindow.xaml">
     <Application.Resources>
         <ResourceDictionary>
             <vm:ViewModelLocator x:Key="Locator" />
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/BasicMVVM.Resources;component/Design/Buttons/ButtonStyle.xaml" />
+                <ResourceDictionary Source="pack://application:,,,/$ext_safeprojectname$.Resources;component/Design/Buttons/ButtonStyle.xaml" />
             </ResourceDictionary.MergedDictionaries>
         </ResourceDictionary>
     </Application.Resources>

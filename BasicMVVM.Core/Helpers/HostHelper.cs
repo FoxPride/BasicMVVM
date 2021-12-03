@@ -1,6 +1,6 @@
 ﻿using Microsoft.Extensions.Hosting;
 
-namespace BasicMVVM.Core.Helpers
+namespace $ext_safeprojectname$.Core.Helpers
 {
     /// <summary>   A helper <see langword="class"/> for sharing host of the app. </summary>
     public static class HostHelper

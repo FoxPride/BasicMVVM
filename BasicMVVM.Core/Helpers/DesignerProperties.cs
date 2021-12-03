@@ -1,4 +1,4 @@
-﻿namespace BasicMVVM.Core.Helpers
+﻿namespace $ext_safeprojectname$.Core.Helpers
 {
     /// <summary>   A <see langword="class"/> with helper methods for designer properties. </summary>
     public static class DesignerProperties

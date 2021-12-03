@@ -1,4 +1,4 @@
-﻿namespace BasicMVVM.WPF.Views.Windows
+﻿namespace $ext_safeprojectname$.WPF.Views.Windows
 {
     /// <summary>   The application's main window. </summary>
     public partial class MainWindow

@@ -1,7 +1,7 @@
-﻿using BasicMVVM.WPF.Views.Windows;
+﻿using $ext_safeprojectname$.WPF.Views.Windows;
 using System.Windows;
 
-namespace BasicMVVM.WPF.Views.UserControls
+namespace $ext_safeprojectname$.WPF.Views.UserControls
 {
     /// <summary>   A home view. </summary>
     public partial class HomeView

@@ -1,9 +1,9 @@
-﻿using BasicMVVM.Core.Stores;
+﻿using $ext_safeprojectname$.Core.Stores;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System.Windows.Input;
 
-namespace BasicMVVM.Core.Infrastructure.Commands
+namespace $ext_safeprojectname$.Core.Infrastructure.Commands
 {
     /// <summary>   Basic commands for app needs. </summary>
     public static class BasicCommands

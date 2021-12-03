@@ -1,4 +1,4 @@
-﻿namespace BasicMVVM.WPF.Views.Windows
+﻿namespace $ext_safeprojectname$.WPF.Views.Windows
 {
     /// <summary>   Second window of project. </summary>
     public partial class SecondWindow

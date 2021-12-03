@@ -1,9 +1,9 @@
-﻿using BasicMVVM.Core.Services.Interfaces;
-using BasicMVVM.Core.ViewModels;
-using BasicMVVM.Windows.Services;
+﻿using $ext_safeprojectname$.Core.Services.Interfaces;
+using $ext_safeprojectname$.Core.ViewModels;
+using $ext_safeprojectname$.Windows.Services;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BasicMVVM.WPF.Helpers
+namespace $ext_safeprojectname$.WPF.Helpers
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>
