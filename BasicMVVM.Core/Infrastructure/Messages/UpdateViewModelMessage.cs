@@ -1,6 +1,6 @@
-﻿using BasicMVVM.Core.Stores;
+﻿using $ext_safeprojectname$.Core.Stores;
 
-namespace BasicMVVM.Core.Infrastructure.Messages
+namespace $ext_safeprojectname$.Core.Infrastructure.Messages
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>

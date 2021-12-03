@@ -1,10 +1,10 @@
-﻿using BasicMVVM.Core.Services.Interfaces;
+﻿using $ext_safeprojectname$.Core.Services.Interfaces;
 using Microsoft.Extensions.Configuration;
 using Squirrel;
 using System;
 using System.Threading.Tasks;
 
-namespace BasicMVVM.Windows.Services
+namespace $ext_safeprojectname$.Windows.Services
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>

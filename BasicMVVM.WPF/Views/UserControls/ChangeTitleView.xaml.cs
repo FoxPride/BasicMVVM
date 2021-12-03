@@ -1,4 +1,4 @@
-﻿namespace BasicMVVM.WPF.Views.UserControls
+﻿namespace $ext_safeprojectname$.WPF.Views.UserControls
 {
     /// <summary>   A change title view. </summary>
     public partial class ChangeTitleView

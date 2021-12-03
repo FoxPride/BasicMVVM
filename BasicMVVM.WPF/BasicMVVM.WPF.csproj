@@ -4,7 +4,7 @@
 	<OutputType>WinExe</OutputType>
 	<TargetFramework>net5.0-windows</TargetFramework>
 	<UseWPF>true</UseWPF>
-	<StartupObject>BasicMVVM.WPF.Program</StartupObject>
+	<StartupObject>$ext_safeprojectname$.WPF.Program</StartupObject>
 	<NuspecFile>ReleaseSpec.nuspec</NuspecFile>
 	<Version>1.0.1</Version>
 	<PublishSingleFile>true</PublishSingleFile>
@@ -24,9 +24,9 @@
   </ItemGroup>
 
   <ItemGroup>
-	<ProjectReference Include="..\BasicMVVM.Core\BasicMVVM.Core.csproj" />
-	<ProjectReference Include="..\BasicMVVM.Resources\BasicMVVM.Resources.csproj" />
-	<ProjectReference Include="..\BasicMVVM.Windows\BasicMVVM.Windows.csproj" />
+	<ProjectReference Include="..\$ext_safeprojectname$.Core\$ext_safeprojectname$.Core.csproj" />
+	<ProjectReference Include="..\$ext_safeprojectname$.Resources\$ext_safeprojectname$.Resources.csproj" />
+	<ProjectReference Include="..\$ext_safeprojectname$.Windows\$ext_safeprojectname$.Windows.csproj" />
   </ItemGroup>
 
   <ItemGroup>
@@ -39,7 +39,7 @@
 	<GetAssemblyIdentity AssemblyFiles="$(TargetPath)">
 	  <Output TaskParameter="Assemblies" ItemName="myAssemblyInfo" />
 	</GetAssemblyIdentity>
-	<Exec Command="dotnet publish --no-build -p:PublishProfile=FolderProfile" />
+	<Exec Command="dotnet publish --no-build -p:PublishProfile=FolderProfile -p:PublishDir=$(SolutionDir)Deploy\publish" />
 	<Exec Command="nuget pack ReleaseSpec.nuspec -Version %(myAssemblyInfo.Version) -Properties Configuration=Release -OutputDirectory $(SolutionDir)Deploy\publish -BasePath $(SolutionDir)Deploy\publish" />
 	<Exec Command="squirrel --releasify $(SolutionDir)Deploy\publish\MVVMTemplate.$([System.Version]::Parse(%(myAssemblyInfo.Version)).ToString(3)).nupkg --framework-version=net5 --releaseDir=$(SolutionDir)Deploy" />
   </Target>

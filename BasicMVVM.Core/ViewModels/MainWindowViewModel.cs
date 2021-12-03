@@ -1,11 +1,11 @@
-﻿using BasicMVVM.Core.Infrastructure.Messages;
-using BasicMVVM.Core.Services.Interfaces;
-using BasicMVVM.Core.Stores;
+﻿using $ext_safeprojectname$.Core.Infrastructure.Messages;
+using $ext_safeprojectname$.Core.Services.Interfaces;
+using $ext_safeprojectname$.Core.Stores;
 using Microsoft.Extensions.Logging;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace BasicMVVM.Core.ViewModels
+namespace $ext_safeprojectname$.Core.ViewModels
 {
     /// <summary>   A ViewModel for the main window. </summary>
     public class MainWindowViewModel : ObservableRecipient, IRecipient<UpdateTitleMessage>, IRecipient<UpdateViewModelMessage>

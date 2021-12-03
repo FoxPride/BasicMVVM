@@ -1,11 +1,11 @@
-﻿using BasicMVVM.Core.Helpers;
-using BasicMVVM.Core.Infrastructure.Messages;
-using BasicMVVM.Core.ViewModels;
+﻿using $ext_safeprojectname$.Core.Helpers;
+using $ext_safeprojectname$.Core.Infrastructure.Messages;
+using $ext_safeprojectname$.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Messaging;
 
-namespace BasicMVVM.Core.Stores
+namespace $ext_safeprojectname$.Core.Stores
 {
     ////////////////////////////////////////////////////////////////////////////////////////////////////
     /// <summary>

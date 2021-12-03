@@ -3,7 +3,7 @@ using Microsoft.Extensions.Hosting;
 using Serilog;
 using System;
 
-namespace BasicMVVM.WPF
+namespace $ext_safeprojectname$.WPF
 {
     /// <summary>   Main startup class for this application. </summary>
     public static class Program

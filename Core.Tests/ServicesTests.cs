@@ -1,7 +1,7 @@
-using BasicMVVM.Core.Services;
+using $ext_safeprojectname$.Core.Services;
 using Xunit;
 
-namespace Core.Test
+namespace Core.Tests
 {
     
     /// <summary>   Calculator service tests. </summary>

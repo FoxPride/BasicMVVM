@@ -1,7 +1,7 @@
-﻿using BasicMVVM.Core.Helpers;
+﻿using $ext_safeprojectname$.Core.Helpers;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace BasicMVVM.Core.ViewModels
+namespace $ext_safeprojectname$.Core.ViewModels
 {
     /// <summary>   The view model locator. Retrieves view models from host container. </summary>
     public class ViewModelLocator

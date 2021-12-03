@@ -1,6 +1,6 @@
 ﻿using System.Threading.Tasks;
 
-namespace BasicMVVM.Core.Services.Interfaces
+namespace $ext_safeprojectname$.Core.Services.Interfaces
 {
     /// <summary>   The updater interface. </summary>
     public interface IUpdater
