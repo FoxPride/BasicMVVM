@@ -1,7 +1,4 @@
-﻿using $ext_safeprojectname$.WPF.Views.Windows;
-using System.Windows;
-
-namespace $ext_safeprojectname$.WPF.Views.UserControls
+﻿namespace $ext_safeprojectname$.WPF.Views.UserControls
 {
     /// <summary>   A home view. </summary>
     public partial class HomeView
@@ -10,11 +7,6 @@ namespace $ext_safeprojectname$.WPF.Views.UserControls
         public HomeView()
         {
             InitializeComponent();
-        }
-
-        private void OpenSecondWindow(object sender, RoutedEventArgs e)
-        {
-            new SecondWindow().Show();
         }
     }
 }

@@ -1,4 +1,6 @@
-﻿using $ext_safeprojectname$.Core.Stores;
+﻿using $ext_safeprojectname$.Core.Helpers;
+using $ext_safeprojectname$.Core.Stores;
+using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
 using Microsoft.Toolkit.Mvvm.Input;
 using System.Windows.Input;
@@ -24,7 +26,7 @@ namespace $ext_safeprojectname$.Core.Infrastructure.Commands
 
         private static void Navigate(ObservableObject viewModel)
         {
-            NavigationStore.CurrentViewModel = viewModel;
+            HostHelper.Host.Services.GetRequiredService<NavigationStore>().CurrentViewModel = viewModel;
         }
     }
 }

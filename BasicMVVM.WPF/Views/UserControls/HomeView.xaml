@@ -21,16 +21,11 @@
                 Command="{Binding Source={x:Static wpfCommands:CloseWindowCommand.Close}}"
                 CommandParameter="{Binding RelativeSource={RelativeSource Mode=FindAncestor, AncestorType={x:Type Window}}}" />
 
-        <StackPanel Margin="5" Orientation="Horizontal"
-                    HorizontalAlignment="Center" VerticalAlignment="Bottom">
-            <Button Padding="5"
-                    Content="Navigate to Change Title"
-                    Command="{Binding Source={x:Static commands:BasicCommands.NavigateCommand}}"
-                    CommandParameter="{Binding ChangeTitleViewModel, Source={StaticResource Locator}}" />
-            <Button Padding="5"
-                    Content="Open Second Window"
-                    Click="OpenSecondWindow" />
-        </StackPanel>
+        <Button HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                Margin="5" Padding="5"
+                Content="Navigate to Change Title"
+                Command="{Binding Source={x:Static commands:BasicCommands.NavigateCommand}}"
+                CommandParameter="{Binding ChangeTitleViewModel, Source={StaticResource Locator}}" />
 
         <ComboBox HorizontalAlignment="Right" VerticalAlignment="Center"
                   Margin="5" Padding="5"

@@ -1,9 +1,7 @@
 ﻿using $ext_safeprojectname$.Core.Helpers;
-using $ext_safeprojectname$.Core.Infrastructure.Messages;
 using $ext_safeprojectname$.Core.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Toolkit.Mvvm.ComponentModel;
-using Microsoft.Toolkit.Mvvm.Messaging;
 
 namespace $ext_safeprojectname$.Core.Stores
 {
@@ -14,23 +12,19 @@ namespace $ext_safeprojectname$.Core.Stores
     /// </summary>
     ////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    public static class NavigationStore
+    public class NavigationStore : ObservableObject
     {
-        private static ObservableObject _currentViewModel;
+        private ObservableObject _currentViewModel;
 
-        static NavigationStore()
+        public NavigationStore()
         {
             CurrentViewModel = HostHelper.Host.Services.GetRequiredService<HomeViewModel>();
         }
 
-        public static ObservableObject CurrentViewModel
+        public ObservableObject CurrentViewModel
         {
             get => _currentViewModel;
-            set
-            {
-                _currentViewModel = value;
-                WeakReferenceMessenger.Default.Send(new UpdateViewModelMessage());
-            }
+            set => SetProperty(ref _currentViewModel, value);
         }
     }
 }

@@ -78,7 +78,8 @@ namespace $ext_safeprojectname$.WPF
 
         public static void ConfigureServices(HostBuilderContext host, IServiceCollection services) => services
             .RegisterServices()
-            .RegisterViewModels();
+            .RegisterViewModels()
+            .RegisterStores();
 
         ////////////////////////////////////////////////////////////////////////////////////////////////////
         /// <summary>   Gets current working directory for app. </summary>
