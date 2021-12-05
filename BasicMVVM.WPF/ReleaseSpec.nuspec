@@ -4,9 +4,9 @@
 	<id>MVVMTemplate</id>
 	<!-- version will be replaced by MSBuild -->
 	<version>0.0.0.0</version>
-	<copyright>2021 © Andrew Baiderin.</copyright>
-	<authors>Andrew Baiderin</authors>
-	<description>Template for basic mvvm</description>
+	<copyright>2021 ©</copyright>
+	<authors></authors>
+	<description>MVVM Toolkit .NET5 template</description>
 	<requireLicenseAcceptance>false</requireLicenseAcceptance>
 	</metadata>
 	

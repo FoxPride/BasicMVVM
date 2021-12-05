@@ -20,7 +20,7 @@ namespace $ext_safeprojectname$.Core.Infrastructure.Messages
         {
             Title = title;
         }
-        
+
         public string Title { get; }
     }
 }

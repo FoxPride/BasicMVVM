@@ -22,7 +22,7 @@
 
     <ScrollViewer VerticalScrollBarVisibility="Auto">
         <Grid MaxWidth="600" Margin="20 10">
-            <ContentControl Content="{Binding CurrentViewModel}">
+            <ContentControl Content="{Binding NavigationStore.CurrentViewModel}">
                 <ContentControl.Resources>
                     <DataTemplate DataType="{x:Type vms:HomeViewModel}">
                         <userControls:HomeView />

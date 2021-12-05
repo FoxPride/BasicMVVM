@@ -3,7 +3,6 @@ using Xunit;
 
 namespace Core.Tests
 {
-    
     /// <summary>   Calculator service tests. </summary>
     public class ServicesTests
     {
